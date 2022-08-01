@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import FeedbackItem from "./FeedbackItem";
-import feedbackData from "../data/feedbackData";
+import feedbackDataArray from "../data/feedbackData";
 
 const FeedbackList = () => {
+  const [feedbackData, setFeedbackData] = useState(feedbackDataArray);
+
   return (
     <ul>
       {feedbackData.map((feedback) => (

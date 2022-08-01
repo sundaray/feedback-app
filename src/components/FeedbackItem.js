@@ -1,12 +1,18 @@
 import React from "react";
+import Card from "./sharedStyling/Card";
+import PropTypes from "prop-types";
 
 const FeedbackItem = ({ feedback: { rating, text } }) => {
   return (
-    <div className="feedback-item-container">
+    <Card>
       <div className="feedback-rating">{rating}</div>
       <div className="feedback-text">{text}</div>
-    </div>
+    </Card>
   );
 };
 
 export default FeedbackItem;
+
+Card.propTypes = {
+  feedback: PropTypes.object,
+};
