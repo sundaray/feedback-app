@@ -1,15 +1,27 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Card from "./sharedStyling/Card";
 import Button from "./sharedStyling/Button";
 import FeedbackRating from "./FeedbackRating";
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ handleAdd }) => {
   const [text, setText] = useState("");
-  const [, setRating] = useState(null);
+  const [rating, setRating] = useState(null);
 
   const handleChange = (e) => {
     setText(e.target.value);
   };
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+    const id = uuidv4();
+    const newFeedback = {
+      id,
+      text,
+      rating,
+    };
+    handleAdd(newFeedback);
+  };
+
   return (
     <Card>
       <h2>How would you rate our service?</h2>
@@ -19,7 +31,7 @@ const FeedbackForm = () => {
         }}
       />
       <div className="feedback-form-group">
-        <form>
+        <form onSubmit={handleFeedbackSubmit}>
           <input onChange={handleChange} value={text} />
           <span>
             {text !== "" && text.trim().length < 10

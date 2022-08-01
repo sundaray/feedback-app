@@ -12,11 +12,15 @@ const App = () => {
     setFeedbackData(feedbackData.filter((item) => item.id !== id));
   };
 
+  const handleAddFeedback = (newFeedback) => {
+    setFeedbackData([newFeedback, ...feedbackData]);
+  };
+
   return (
     <>
       <Header />
       <div className="feedback-container">
-        <FeedbackForm />
+        <FeedbackForm handleAdd={handleAddFeedback} />
         <FeedbackStats feedback={feedbackData} />
         <FeedbackList feedback={feedbackData} handleDelete={deleteFeedback} />
       </div>
