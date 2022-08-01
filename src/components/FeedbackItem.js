@@ -1,12 +1,16 @@
 import React from "react";
 import Card from "./sharedStyling/Card";
 import PropTypes from "prop-types";
+import { FaTimes } from "react-icons/fa";
 
-const FeedbackItem = ({ feedback: { rating, text } }) => {
+const FeedbackItem = ({ feedback: { id, rating, text }, handleDelete }) => {
   return (
     <Card>
       <div className="feedback-rating">{rating}</div>
-      <div className="feedback-text">{text}</div>
+      <button onClick={() => handleDelete(id)}>
+        <FaTimes />
+      </button>
+      <p className="feedback-text">{text}</p>
     </Card>
   );
 };
