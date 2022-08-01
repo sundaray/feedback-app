@@ -3,14 +3,18 @@ import { v4 as uuidv4 } from "uuid";
 import Card from "./sharedStyling/Card";
 import Button from "./sharedStyling/Button";
 import FeedbackRating from "./FeedbackRating";
+import { useFeedback } from "../App";
 
 const FeedbackForm = ({ handleAdd }) => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(null);
 
+  const { feedbackData, setFeedbackData } = useFeedback();
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
+
   const handleFeedbackSubmit = (e) => {
     e.preventDefault();
     const id = uuidv4();
@@ -19,7 +23,8 @@ const FeedbackForm = ({ handleAdd }) => {
       text,
       rating,
     };
-    handleAdd(newFeedback);
+    setFeedbackData([newFeedback, ...feedbackData]);
+    setText("");
   };
 
   return (
@@ -39,7 +44,7 @@ const FeedbackForm = ({ handleAdd }) => {
               : ""}
           </span>
           <Button btnDisabled={text.trim().length < 10 ? true : false}>
-            Send
+            Add
           </Button>
         </form>
       </div>

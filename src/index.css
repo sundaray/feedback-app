@@ -12,14 +12,16 @@ html {
 .card {
   width: 40%;
   max-width: 50%;
-  height: 5rem;
+  min-height: 5rem;
+  height: auto;
+  position: relative;
   background-color: #FDFEFE ;
   border: .1rem solid #ECF0F1;
   border-radius: .8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   margin: 0rem auto;
   margin-bottom: 2rem;
   box-shadow: .8rem .8rem 1.5rem #F7F9F9;
@@ -29,10 +31,52 @@ html {
   box-shadow: .2rem .2rem .5rem #F7F9F9;
 }
 
-.card p {
-  font-size: 1.2rem;
+.card .feedback-rating {
+position: absolute;
+top: -0.8rem;
+left: -0.8rem;
+width: 2.5rem;
+height: 2.5rem;
+background-color: #DFFF00;
+border-radius: 50%;
+display: grid;
+place-items: center;
 }
 
-.card button {
+.card .feedback-text {
+  font-size: 1.4rem;
+}
+
+.close-icon {
+  font-size: 1.3em;
+  color: #D0D3D4;
+  position: absolute;
+  top: .2rem;
+  right: .2rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.close-icon:hover {
+  color: #B3B6B7;
+}
+
+.question-icon {
+  font-size: 2rem;
+  color: #87CEEB;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+}
+.question-icon:hover {
+  color: #6495ED;
+}
+
+.btn {
+  width: 6rem;
+  height: 3rem;
   cursor: pointer;
 }
+

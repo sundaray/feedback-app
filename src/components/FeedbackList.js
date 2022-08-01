@@ -3,7 +3,7 @@ import FeedbackItem from "./FeedbackItem";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Card from "./sharedStyling/Card";
 
-const FeedbackList = ({ feedback, handleDelete }) => {
+const FeedbackList = ({ feedback }) => {
   const [parent] = useAutoAnimate();
 
   return (
@@ -15,11 +15,7 @@ const FeedbackList = ({ feedback, handleDelete }) => {
       ) : (
         <ul ref={parent}>
           {feedback.map((feedback) => (
-            <FeedbackItem
-              key={feedback.id}
-              feedback={feedback}
-              handleDelete={handleDelete}
-            />
+            <FeedbackItem key={feedback.id} feedback={feedback} />
           ))}
         </ul>
       )}
