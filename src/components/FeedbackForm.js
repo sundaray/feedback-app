@@ -5,11 +5,11 @@ import Button from "./sharedStyling/Button";
 import FeedbackRating from "./FeedbackRating";
 import { useFeedback } from "../App";
 
-const FeedbackForm = ({ handleAdd }) => {
+const FeedbackForm = () => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(null);
 
-  const { feedbackData, setFeedbackData } = useFeedback();
+  const { edit, feedbackData, setFeedbackData } = useFeedback();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -37,7 +37,10 @@ const FeedbackForm = ({ handleAdd }) => {
       />
       <div className="feedback-form-group">
         <form onSubmit={handleFeedbackSubmit}>
-          <input onChange={handleChange} value={text} />
+          <input
+            onChange={handleChange}
+            value={edit.editStatus ? edit.text : text}
+          />
           <span>
             {text !== "" && text.trim().length < 10
               ? "The feedback must be greater than 10 characters long."
