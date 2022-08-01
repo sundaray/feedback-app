@@ -5,13 +5,15 @@ import { FaTimes } from "react-icons/fa";
 
 const FeedbackItem = ({ feedback: { id, rating, text }, handleDelete }) => {
   return (
-    <Card>
-      <div className="feedback-rating">{rating}</div>
-      <button onClick={() => handleDelete(id)}>
-        <FaTimes />
-      </button>
-      <p className="feedback-text">{text}</p>
-    </Card>
+    <>
+      <Card>
+        <div className="feedback-rating">{rating}</div>
+        <button onClick={() => handleDelete(id)}>
+          <FaTimes />
+        </button>
+        <p className="feedback-text">{text}</p>
+      </Card>
+    </>
   );
 };
 

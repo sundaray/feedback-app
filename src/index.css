@@ -23,7 +23,6 @@ html {
   margin: 0rem auto;
   margin-bottom: 2rem;
   box-shadow: .8rem .8rem 1.5rem #F7F9F9;
-  cursor: pointer;
   transition: all 0.2s;
 }
 .card:hover {
@@ -32,4 +31,8 @@ html {
 
 .card p {
   font-size: 1.2rem;
+}
+
+.card button {
+  cursor: pointer;
 }
