@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createContext, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { FaQuestion } from "react-icons/fa";
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
@@ -24,17 +24,25 @@ const App = () => {
   };
 
   return (
-    <>
+    <FeedbackContext.Provider value={feedback}>
       <Header />
-      <FeedbackContext.Provider value={feedback}>
-        <div className="feedback-container">
-          <FeedbackForm />
-          <FeedbackStats feedback={feedbackData} />
-          <FeedbackList feedback={feedbackData} />
-        </div>
-      </FeedbackContext.Provider>
-      <FaQuestion className="question-icon" />
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="feedback-container">
+              <FeedbackForm />
+              <FeedbackStats feedback={feedbackData} />
+              <FeedbackList feedback={feedbackData} />
+            </div>
+          }
+        />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <Link to="/about">
+        <FaQuestion className="question-icon" />
+      </Link>
+    </FeedbackContext.Provider>
   );
 };
 
