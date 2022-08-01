@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-const FeedbackItem = () => {
-  const [FeedbackRating, setFeedbackRating] = useState(10);
-  const [FeedbackText, setFeedbackText] = useState("This is a feedback.");
-
+const FeedbackItem = ({ feedback: { rating, text } }) => {
   return (
-    <div className="card">
-      <div className="num-display">{FeedbackRating}</div>
-      <div className="text-display">{FeedbackText}</div>
+    <div className="feedback-item-container">
+      <div className="feedback-rating">{rating}</div>
+      <div className="feedback-text">{text}</div>
     </div>
   );
 };
