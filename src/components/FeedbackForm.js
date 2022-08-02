@@ -46,7 +46,7 @@ const FeedbackForm = () => {
 
   return (
     <Card className="form">
-      <h1>Give your feedback:</h1>
+      <h1>Leave a review:</h1>
       <FeedbackRating
         select={(rating) => {
           setRating(rating);
