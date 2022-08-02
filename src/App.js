@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createContext, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -17,21 +17,17 @@ export const useFeedback = () => {
 
 const App = () => {
   const [feedbackData, setFeedbackData] = useState(feedbackDataArray);
-  const [edit, setEdit] = useState({ editStatus: false });
+  const [edit, setEdit] = useState({ item: {}, editStatus: false });
 
-  const feedback = {
+  const feedbackContextData = {
     edit,
     setEdit,
     feedbackData,
     setFeedbackData,
   };
 
-  useEffect(() => {
-    console.log(edit);
-  }, [edit]);
-
   return (
-    <FeedbackContext.Provider value={feedback}>
+    <FeedbackContext.Provider value={feedbackContextData}>
       <Header />
       <Routes>
         <Route

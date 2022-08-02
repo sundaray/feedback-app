@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useFeedback } from "../App";
 
 const FeedbackRating = ({ select }) => {
-  const [selected, setSelected] = useState(6);
+  const [selected, setSelected] = useState(10);
+
+  const { edit } = useFeedback();
+
+  useEffect(() => {
+    setSelected(edit.item.rating);
+  }, [edit]);
 
   const handleChange = (e) => {
     setSelected(+e.currentTarget.value);

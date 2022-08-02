@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Card = ({ children }) => {
-  return <div className="card">{children}</div>;
+const Card = ({ className, children }) => {
+  return <div className={`card card-${className}`}>{children}</div>;
 };
 
 export default Card;

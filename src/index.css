@@ -9,18 +9,30 @@ html {
   font-family: sans-serif;
 }
 
+header {
+  width: 100%;
+  height: 8rem;
+  border-bottom: .1rem solid #ECF0F1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+}
+
+header h2 {
+  font-size: clamp(4rem, 6vw, 6rem);
+  font-weight: 800;
+  color: #17202A ;
+  text-align: center;
+}
+
 .card {
-  width: 40%;
-  max-width: 50%;
+  width: clamp(30rem, 50vw, 70rem);
   min-height: 5rem;
   height: auto;
   position: relative;
   background-color: #FDFEFE ;
   border: .1rem solid #ECF0F1;
   border-radius: .8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 2.5rem;
   margin: 0rem auto;
   margin-bottom: 2rem;
@@ -31,12 +43,80 @@ html {
   box-shadow: .2rem .2rem .5rem #F7F9F9;
 }
 
+.feedback-form-group {
+  height: 4rem;
+  position: relative;
+}
+
+.card-form input[type=text] {
+  width: 100%;
+  height: 4rem;
+  border: .15rem solid #B3B6B7;
+  border-radius: 3rem;
+  outline: none;
+  padding: 0.5rem 1rem;
+  transition: all .2s;
+  margin-bottom: .2rem;
+}
+
+.card-form input[type=text]:focus {
+  background-color: white;
+  outline: .15rem solid #B3B6B7;
+}
+
+.form-validation-warning {
+  color: #FF7F50;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+.btn-submit {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 6.5rem;
+  height: 3rem;
+  color: white;
+  background-color: #4169E1;
+  font-weight: bold;
+  border: none;
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+
+
+.btn-submit:hover {
+  background-color: #001E3C;
+}
+
+.btn-submot:disabled,
+.btn-submit[disabled]{
+  background-color: #7393B3;
+}
+
+
+.feedback-stats {
+  width: clamp(30rem, 50vw, 70rem);
+  height: 6rem;
+  border-radius: .8rem;
+  background-color: #ECF0F1;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  margin: 0rem auto;
+  margin-bottom: 2rem;
+}
+
 .card .feedback-rating {
 position: absolute;
 top: -0.8rem;
 left: -0.8rem;
 width: 2.5rem;
 height: 2.5rem;
+font-size: 1.2rem;
+font-weight: 600;
 background-color: #DFFF00;
 border-radius: 50%;
 display: grid;
@@ -75,7 +155,7 @@ place-items: center;
 .question-icon-container {
   width: 3rem;
   height: 3rem;
-  background-color: #000033;
+  background-color: #001E3C;
   border-radius: 50%;
   position: absolute;
   bottom: 1rem;
@@ -88,7 +168,7 @@ place-items: center;
 
 .question-icon {
   font-size: 1.6rem;
-  color: #64ffda;
+  color: #ECF0F1;
   transition: all 0.2s;
 }
 
@@ -97,8 +177,14 @@ place-items: center;
 }
 
 .btn {
-  width: 6rem;
-  height: 3rem;
+  /* width: 6rem;
+  height: 3rem; */
   cursor: pointer;
+}
+
+
+.rating {
+  list-style-type: none;
+  display: flex;
 }
 

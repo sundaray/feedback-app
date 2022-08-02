@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Card from "./sharedStyling/Card";
 import Button from "./sharedStyling/Button";
@@ -9,7 +9,14 @@ const FeedbackForm = () => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(null);
 
-  const { edit, feedbackData, setFeedbackData } = useFeedback();
+  const { edit, setEdit, feedbackData, setFeedbackData } = useFeedback();
+
+  useEffect(() => {
+    if (edit.editStatus === true) {
+      setText(edit.item.text);
+      setRating(edit.item.rating);
+    }
+  }, [edit]);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -23,13 +30,23 @@ const FeedbackForm = () => {
       text,
       rating,
     };
-    setFeedbackData([newFeedback, ...feedbackData]);
+
+    if (edit.editStatus === true) {
+      setFeedbackData(
+        feedbackData.map((item) =>
+          item.id === edit.item.id ? { ...item, ...newFeedback } : item
+        )
+      );
+      setEdit({ ...edit, editStatus: false });
+    } else {
+      setFeedbackData([newFeedback, ...feedbackData]);
+    }
     setText("");
   };
 
   return (
-    <Card>
-      <h2>How would you rate our service?</h2>
+    <Card className="form">
+      <h1>Give your feedback:</h1>
       <FeedbackRating
         select={(rating) => {
           setRating(rating);
@@ -37,17 +54,22 @@ const FeedbackForm = () => {
       />
       <div className="feedback-form-group">
         <form onSubmit={handleFeedbackSubmit}>
-          <input
-            onChange={handleChange}
-            value={edit.editStatus ? edit.text : text}
-          />
+          <input type="text" onChange={handleChange} value={text} />
           <span>
-            {text !== "" && text.trim().length < 10
-              ? "The feedback must be greater than 10 characters long."
-              : ""}
+            {text !== "" && text.trim().length < 10 ? (
+              <span className="form-validation-warning">
+                The feedback must be greater than 10 characters long.
+              </span>
+            ) : (
+              ""
+            )}
           </span>
-          <Button btnDisabled={text.trim().length < 10 ? true : false}>
-            Add
+          <Button
+            className="submit"
+            type="submit"
+            btnDisabled={text.trim().length < 10 ? true : false}
+          >
+            {edit.editStatus ? "Update" : "Add"}
           </Button>
         </form>
       </div>

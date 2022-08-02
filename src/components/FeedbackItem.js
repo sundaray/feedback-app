@@ -14,7 +14,7 @@ const FeedbackItem = ({ feedback: { id, rating, text } }) => {
         <FaEdit
           className="edit-icon"
           onClick={() =>
-            setEdit({ ...edit, editStatus: true, id, rating, text })
+            setEdit({ ...edit, item: { id, rating, text }, editStatus: true })
           }
         />
         <FaTimes
